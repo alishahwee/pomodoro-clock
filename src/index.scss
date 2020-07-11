@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+* {
+  color: white;
+}
+
 body {
   padding: 0;
   margin: 0 auto;
@@ -8,8 +14,21 @@ body {
 .Header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;  
   & img {
     object-fit: contain;
     height: 300px;
+  }
+  & h2 {
+    width: 500px;
+    position: relative;
+    bottom: 50px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    z-index: 2;
   }
 }
