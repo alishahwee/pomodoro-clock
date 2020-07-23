@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import SessionLength from './SessionLength';
 
-function Timer() {
-  return (
-    <div className='Timer'></div>
-  );
+class Timer extends Component {
+  render() {
+    return (
+      <div className='Timer'>
+        <SessionLength />
+      </div>
+    );
+  }
 }
 
 export default Timer;
