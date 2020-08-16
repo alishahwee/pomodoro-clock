@@ -6,23 +6,25 @@ function TimerLengthControl(props) {
       <p id={props.titleId} className='TimerLengthControl__title'>
         {props.title}
       </p>
-      <button
-        id={props.minId}
-        className='TimerLengthControl__btn'
-        value='-'
-        onClick={props.onClick}
-      >
-        <i className='fas fa-minus' />
-      </button>
-      <p id={props.lengthId}>{props.length}</p>
-      <button
-        id={props.addId}
-        className='TimerLengthControl__btn'
-        value='+'
-        onClick={props.onClick}
-      >
-        <i className='fas fa-plus' />
-      </button>
+      <div className='TimerLengthControl__controls'>
+        <button
+          id={props.minId}
+          className='TimerLengthControl__controls--btn'
+          value='-'
+          onClick={props.onClick}
+        >
+          <i className='fas fa-minus' />
+        </button>
+        <p id={props.lengthId}>{props.length}</p>
+        <button
+          id={props.addId}
+          className='TimerLengthControl__controls--btn'
+          value='+'
+          onClick={props.onClick}
+        >
+          <i className='fas fa-plus' />
+        </button>
+      </div>
     </div>
   );
 }
