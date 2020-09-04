@@ -9,7 +9,7 @@ $lightBorder: #d3d3d3;
 
 @mixin btn {
   height: 30px;
-  width: 60px;
+  width: 100%;
   background: #fff;
   border: none;
   border-radius: 5px;
@@ -147,12 +147,92 @@ body {
       height: 35px;
       font-size: 1.5rem;
       margin: 0;
-      padding: 0;
+      padding: 0.5rem ;
       border-right: 1px solid $lightBorder;
       border-left: 1px solid $lightBorder;
       & span {
         vertical-align: middle;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .Header {
+    & img {
+      height: 230px;
+    }
+    & h2 {
+      font-size:1.5rem;
+      width: 380px;
+    }
+  }
+
+  .SessionLength {
+    &__label {
+      font-size: 1.7rem;
+    }
+    &__time {
+      font-size: 4rem;
+    }
+  }
+
+  .TimerLengthControl {
+    &__title {
+      font-size: 1.2rem;
+    }
+    &__controls {
+      &__length {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Timer {
+    padding: 0.4rem;
+  }
+
+  .Header {
+    & img {
+      height: 160px;
+    }
+    & h2 {
+      font-size: 1.2rem;
+      width: 300px;
+    }
+  }
+
+  .SessionLength {
+    padding: 0.4rem;
+    margin: 0.4rem;
+    &__label {
+      font-size: 1.5rem;
+    }
+    &__time {
+      font-size: 3rem;
+    }
+  }
+
+  .TimerLengthControl {
+    padding: 0.4rem;
+    margin: 0.4rem;
+    &__title {
+      font-size: 1rem;
+    }
+    &__controls {
+      &__length {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  i {
+    font-size: 1rem;
   }
 }
