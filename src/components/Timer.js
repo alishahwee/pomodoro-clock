@@ -15,9 +15,9 @@ class Timer extends Component {
       timer: 1500,
     };
     this.controlTimer = this.controlTimer.bind(this);
-    this.beginCountdown = this.beginCountdown.bind(this);
     this.switchTimer = this.switchTimer.bind(this);
     this.decreaseTimer = this.decreaseTimer.bind(this);
+    this.beginCountdown = accurateInterval(this.decreaseTimer, 1000);
     this.setBreakLength = this.setBreakLength.bind(this);
     this.setSessionLength = this.setSessionLength.bind(this);
     this.clockify = this.clockify.bind(this);
@@ -43,10 +43,6 @@ class Timer extends Component {
     } else {
       // Code to start timer
     }
-  }
-
-  beginCountdown() {
-    // TODO
   }
 
   switchTimer() {
