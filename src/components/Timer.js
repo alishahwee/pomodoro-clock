@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SessionLength from './SessionLength';
 import TimerLengthControl from './TimerLengthControl';
+import accurateInterval from 'accurate-interval';
 
 class Timer extends Component {
   constructor(props) {
@@ -13,7 +14,14 @@ class Timer extends Component {
       timerMode: 'Session',
       timer: 1500,
     };
+    this.controlTimer = this.controlTimer.bind(this);
+    this.beginCountdown = this.beginCountdown.bind(this);
+    this.switchTimer = this.switchTimer.bind(this);
+    this.decreaseTimer = this.decreaseTimer.bind(this);
+    this.setBreakLength = this.setBreakLength.bind(this);
+    this.setSessionLength = this.setSessionLength.bind(this);
     this.clockify = this.clockify.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -27,6 +35,38 @@ class Timer extends Component {
         btnState: 'Start',
       });
     }
+  }
+  
+  controlTimer() {
+    if (this.state.timerOn) {
+      // Code to stop timer
+    } else {
+      // Code to start timer
+    }
+  }
+
+  beginCountdown() {
+    // TODO
+  }
+
+  switchTimer() {
+    // TODO
+  }
+
+  decreaseTimer() {
+    // TODO
+  }
+
+  resetTimer() {
+    // TODO
+  }
+
+  setBreakLength(e) {
+    if (this.state.timerOn) return; // Disable if timer is on
+  }
+
+  setSessionLength(e) {
+    if (this.state.timerOn) return; // Disable if timer is on
   }
 
   clockify() {
@@ -60,6 +100,14 @@ class Timer extends Component {
           lengthId='session-length'
           title='Session Length'
           length={this.state.sessionLength}
+        />
+        <audio
+          id="beep"
+          preload="auto"
+          src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+          ref={(audio) => {
+            this.audioBeep = audio;
+          }}
         />
       </div>
     );
