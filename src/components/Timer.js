@@ -36,7 +36,7 @@ class Timer extends Component {
       });
     }
   }
-  
+
   controlTimer() {
     if (this.state.timerOn) {
       // Code to stop timer
@@ -102,9 +102,9 @@ class Timer extends Component {
           length={this.state.sessionLength}
         />
         <audio
-          id="beep"
-          preload="auto"
-          src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+          id='beep'
+          preload='auto'
+          src='https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'
           ref={(audio) => {
             this.audioBeep = audio;
           }}
