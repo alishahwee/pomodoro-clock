@@ -13,6 +13,7 @@ function SessionLength(props) {
         <button
           id='start_stop'
           className='SessionLength__controls__btn SessionLength__controls__btn--start-stop'
+          onClick={props.controlTimer}
         >
           {props.btnState}
         </button>
