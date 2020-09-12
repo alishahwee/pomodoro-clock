@@ -64,7 +64,16 @@ class Timer extends Component {
   }
 
   resetTimer() {
-    // TODO
+    this.setState({
+      breakLength: 5,
+      sessionLength: 25,
+      btnState: 'Start',
+      timerOn: false,
+      timerMode: 'Session',
+      timer: 1500,
+      intervalID: undefined,
+    });
+    this.state.intervalID && this.state.intervalID.clear();
   }
 
   setBreakLength(e) {
@@ -91,6 +100,7 @@ class Timer extends Component {
           clockify={this.clockify}
           btnState={this.state.btnState}
           controlTimer={this.controlTimer}
+          resetTimer={this.resetTimer}
         />
         <TimerLengthControl
           titleId='break-label'

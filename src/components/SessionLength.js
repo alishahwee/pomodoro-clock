@@ -20,6 +20,7 @@ function SessionLength(props) {
         <button
           id='reset'
           className='SessionLength__controls__btn SessionLength__controls__btn--reset'
+          onClick={props.resetTimer}
         >
           <i className='fas fa-redo' />
         </button>
