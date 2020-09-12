@@ -13,11 +13,12 @@ class Timer extends Component {
       timerOn: false,
       timerMode: 'Session',
       timer: 1500,
+      intervalID: undefined,
     };
     this.controlTimer = this.controlTimer.bind(this);
+    this.beginCountdown = this.beginCountdown.bind(this);
     this.switchTimer = this.switchTimer.bind(this);
     this.decreaseTimer = this.decreaseTimer.bind(this);
-    this.beginCountdown = accurateInterval(this.decreaseTimer, 1000);
     this.setBreakLength = this.setBreakLength.bind(this);
     this.setSessionLength = this.setSessionLength.bind(this);
     this.clockify = this.clockify.bind(this);
@@ -25,12 +26,13 @@ class Timer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState === this.state) return;
-    if (prevState.timerOn) {
+    const timerOnDidUpdate = prevState.timerOn !== this.state.timerOn;
+
+    if (this.state.timerOn && timerOnDidUpdate) {
       this.setState({
         btnState: 'Stop',
       });
-    } else {
+    } else if (timerOnDidUpdate) {
       this.setState({
         btnState: 'Start',
       });
@@ -39,10 +41,18 @@ class Timer extends Component {
 
   controlTimer() {
     if (this.state.timerOn) {
-      // Code to stop timer
+      this.state.intervalID && this.state.intervalID.clear(); // Stop timer
+      this.setState({ timerOn: false, });
     } else {
-      // Code to start timer
+      this.beginCountdown(); // Start timer
+      this.setState({ timerOn: true, });
     }
+  }
+
+  beginCountdown() {
+    this.setState({
+      intervalID: accurateInterval(this.decreaseTimer, 1000),
+    });
   }
 
   switchTimer() {
@@ -50,7 +60,7 @@ class Timer extends Component {
   }
 
   decreaseTimer() {
-    // TODO
+    this.setState({timer: this.state.timer - 1});
   }
 
   resetTimer() {
@@ -80,6 +90,7 @@ class Timer extends Component {
           timerMode={this.state.timerMode}
           clockify={this.clockify}
           btnState={this.state.btnState}
+          controlTimer={this.controlTimer}
         />
         <TimerLengthControl
           titleId='break-label'
