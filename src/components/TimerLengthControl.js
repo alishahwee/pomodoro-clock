@@ -11,7 +11,7 @@ function TimerLengthControl(props) {
           id={props.minId}
           className='TimerLengthControl__controls__btn TimerLengthControl__controls__btn--left'
           value='-'
-          onClick={props.onClick}
+          onClick={props.setLength}
         >
           <i className='fas fa-minus' />
         </button>
@@ -22,7 +22,7 @@ function TimerLengthControl(props) {
           id={props.addId}
           className='TimerLengthControl__controls__btn TimerLengthControl__controls__btn--right'
           value='+'
-          onClick={props.onClick}
+          onClick={props.setLength}
         >
           <i className='fas fa-plus' />
         </button>

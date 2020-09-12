@@ -19,6 +19,7 @@ class Timer extends Component {
     this.beginCountdown = this.beginCountdown.bind(this);
     this.switchTimer = this.switchTimer.bind(this);
     this.decreaseTimer = this.decreaseTimer.bind(this);
+    this.controlLength = this.controlLength.bind(this);
     this.setBreakLength = this.setBreakLength.bind(this);
     this.setSessionLength = this.setSessionLength.bind(this);
     this.clockify = this.clockify.bind(this);
@@ -60,7 +61,7 @@ class Timer extends Component {
   }
 
   decreaseTimer() {
-    this.setState({timer: this.state.timer - 1});
+    this.setState((prevState) => ({timer: prevState.timer - 1}));
   }
 
   resetTimer() {
@@ -76,12 +77,31 @@ class Timer extends Component {
     this.state.intervalID && this.state.intervalID.clear();
   }
 
-  setBreakLength(e) {
+  controlLength() {
     if (this.state.timerOn) return; // Disable if timer is on
+
+  }
+
+  setBreakLength(e) {
+    const currentLength = this.state.breakLength;
+    const value = e.currentTarget.value;
+
+    if (value === '-' && currentLength !== 1) {
+      this.setState((prevState) => ({ breakLength: prevState.breakLength - 1 }));
+    } else if (value === '+' && currentLength !== 60) {
+      this.setState((prevState) => ({ breakLength: prevState.breakLength + 1 }));
+    }
   }
 
   setSessionLength(e) {
-    if (this.state.timerOn) return; // Disable if timer is on
+    const currentLength = this.state.breakLength;
+    const value = e.currentTarget.value;
+
+    if (value === '-' && currentLength !== 1) {
+      this.setState((prevState) => ({ sessionLength: prevState.sessionLength - 1 }));
+    } else if (value === '+' && currentLength !== 60) {
+      this.setState((prevState) => ({ sessionLength: prevState.sessionLength + 1 }));
+    }
   }
 
   clockify() {
@@ -109,6 +129,7 @@ class Timer extends Component {
           lengthId='break-length'
           title='Break Length'
           length={this.state.breakLength}
+          setLength={this.setBreakLength}
         />
         <TimerLengthControl
           titleId='session-label'
@@ -117,6 +138,7 @@ class Timer extends Component {
           lengthId='session-length'
           title='Session Length'
           length={this.state.sessionLength}
+          setLength={this.setSessionLength}
         />
         <audio
           id='beep'
