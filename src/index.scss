@@ -160,6 +160,17 @@ body {
   }
 }
 
+.footer {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1.8px;
+  font-size: 1rem;
+  & a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .Header {
     & img {
@@ -203,10 +214,10 @@ body {
 
   .Header {
     & img {
-      height: 160px;
+      height: 150px;
     }
     & h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       width: 300px;
     }
   }
