@@ -68,16 +68,16 @@ class Timer extends Component {
           this.setState({ timer: this.state.sessionLength * 60 });
         }
       }
-    } 
+    }
   }
 
   controlTimer() {
     if (this.state.timerOn) {
       this.state.intervalID && this.state.intervalID.clear(); // Stop timer
-      this.setState({ timerOn: false, });
+      this.setState({ timerOn: false });
     } else {
       this.beginCountdown(); // Start timer
-      this.setState({ timerOn: true, });
+      this.setState({ timerOn: true });
     }
   }
 
@@ -121,9 +121,13 @@ class Timer extends Component {
     const value = e.currentTarget.value;
 
     if (value === '-' && currentLength !== 1) {
-      this.setState((prevState) => ({ breakLength: prevState.breakLength - 1 }));
+      this.setState((prevState) => ({
+        breakLength: prevState.breakLength - 1,
+      }));
     } else if (value === '+' && currentLength !== 60) {
-      this.setState((prevState) => ({ breakLength: prevState.breakLength + 1 }));
+      this.setState((prevState) => ({
+        breakLength: prevState.breakLength + 1,
+      }));
     }
   }
 
@@ -133,9 +137,13 @@ class Timer extends Component {
     const value = e.currentTarget.value;
 
     if (value === '-' && currentLength !== 1) {
-      this.setState((prevState) => ({ sessionLength: prevState.sessionLength - 1 }));
+      this.setState((prevState) => ({
+        sessionLength: prevState.sessionLength - 1,
+      }));
     } else if (value === '+' && currentLength !== 60) {
-      this.setState((prevState) => ({ sessionLength: prevState.sessionLength + 1 }));
+      this.setState((prevState) => ({
+        sessionLength: prevState.sessionLength + 1,
+      }));
     }
   }
 
