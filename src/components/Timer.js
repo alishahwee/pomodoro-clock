@@ -19,7 +19,6 @@ class Timer extends Component {
     this.beginCountdown = this.beginCountdown.bind(this);
     this.switchTimer = this.switchTimer.bind(this);
     this.decreaseTimer = this.decreaseTimer.bind(this);
-    this.controlLength = this.controlLength.bind(this);
     this.setBreakLength = this.setBreakLength.bind(this);
     this.setSessionLength = this.setSessionLength.bind(this);
     this.clockify = this.clockify.bind(this);
@@ -77,12 +76,8 @@ class Timer extends Component {
     this.state.intervalID && this.state.intervalID.clear();
   }
 
-  controlLength() {
-    if (this.state.timerOn) return; // Disable if timer is on
-
-  }
-
   setBreakLength(e) {
+    if (this.state.timerOn) return; // Disable if timer is on
     const currentLength = this.state.breakLength;
     const value = e.currentTarget.value;
 
@@ -94,6 +89,7 @@ class Timer extends Component {
   }
 
   setSessionLength(e) {
+    if (this.state.timerOn) return; // Disable if timer is on
     const currentLength = this.state.breakLength;
     const value = e.currentTarget.value;
 
